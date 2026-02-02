@@ -2,31 +2,35 @@ name: PG GAP Checker
 
 on:
   schedule:
-    - cron: "16,36,56 * * * *"  # your 20-min interval
+    - cron: "16,36,56 * * * *"  # every 20 mins at :16, :36, :56
   workflow_dispatch:
 
 permissions:
-  contents: write  # allow workflow to commit changes
+  contents: write  # allow committing last_price.txt
 
 jobs:
   run:
     runs-on: ubuntu-latest
     steps:
+      # Checkout repository
       - uses: actions/checkout@v4
 
+      # Setup Python
       - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
 
+      # Install requests
       - run: pip install requests
 
-      - name: Run script
+      # Run the Python script
+      - name: Run GAP Price Checker
         run: python check_gold.py
         env:
           BOT_TOKEN: ${{ secrets.BOT_TOKEN }}
           CHAT_ID: ${{ secrets.CHAT_ID }}
 
-      # ✅ Commit last_price.txt back to repo so next run remembers it
+      # Commit last_price.txt back to repo for persistence
       - name: Commit last price
         run: |
           git config user.name "GitHub Actions"
