@@ -11,7 +11,8 @@ def send_telegram(msg):
     url = f"https://api.telegram.org/bot{BOT_TOKEN}/sendMessage"
     requests.post(url, data={
         "chat_id": CHAT_ID,
-        "text": msg
+        "text": msg,
+        "parse_mode": "Markdown"  # enables *bold* formatting
     })
 
 # Fetch the live price page
@@ -25,7 +26,8 @@ if not match:
     print("Price not found on page.")
     exit()
 
-current_price_str = match.group(1)  # e.g., RM648
+# Remove any spaces in the price: RM 676 -> RM676
+current_price_str = match.group(1).replace(" ", "")
 current_price = float(current_price_str.replace("RM", "").strip())
 
 # Read last price from file
@@ -36,7 +38,7 @@ try:
 except FileNotFoundError:
     last_price = None
 
-# If first run, just save price
+# First run: just save price
 if last_price is None:
     with open("last_price.txt", "w") as f:
         f.write(current_price_str)
@@ -52,18 +54,18 @@ if difference == 0:
 
 change_amount = f"{abs(difference):.0f}"
 
-# Build Telegram message
+# Build Telegram message with bold formatting
 if difference > 0:
     message = (
         f"‼️‼️‼️PRICE UPDATED‼️‼️‼️\n\n"
         f"Harga emas GAP baru sahaja *NAIK* sebanyak *RM{change_amount}* "
-        f"daripada *RM{last_price:.0f}* kepada *RM{current_price_str}*"
+        f"daripada *RM{last_price:.0f}* kepada *{current_price_str}*"
     )
 else:
     message = (
         f"‼️‼️‼️PRICE UPDATED‼️‼️‼️\n\n"
         f"Harga emas GAP baru sahaja *TURUN* sebanyak *RM{change_amount}* "
-        f"daripada *RM{last_price:.0f}* kepada *RM{current_price_str}*"
+        f"daripada *RM{last_price:.0f}* kepada *{current_price_str}*"
     )
 
 send_telegram(message)
