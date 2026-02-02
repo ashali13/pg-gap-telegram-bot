@@ -56,14 +56,14 @@ change_amount = f"{abs(difference):.0f}"
 if difference > 0:
     message = (
         f"‼️‼️‼️PRICE UPDATED‼️‼️‼️\n\n"
-        f"Harga emas GAP baru sahaja naik sebanyak RM{change_amount} "
-        f"daripada RM{last_price:.0f} kepada {current_price_str}"
+        f"Harga emas GAP baru sahaja *NAIK* sebanyak *RM{change_amount}* "
+        f"daripada *RM{last_price:.0f}* kepada *RM{current_price_str}*"
     )
 else:
     message = (
         f"‼️‼️‼️PRICE UPDATED‼️‼️‼️\n\n"
-        f"Harga emas GAP baru sahaja turun sebanyak RM{change_amount} "
-        f"daripada RM{last_price:.0f} kepada {current_price_str}"
+        f"Harga emas GAP baru sahaja *TURUN* sebanyak *RM{change_amount}* "
+        f"daripada *RM{last_price:.0f}* kepada *RM{current_price_str}*"
     )
 
 send_telegram(message)
