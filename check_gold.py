@@ -7,7 +7,7 @@ CHAT_ID = os.environ["CHAT_ID"]
 
 URL = "https://www.publicgold.com.my/"
 
-def send_telegram("Test message: bot works!"):
+def send_telegram(msg):
     url = f"https://api.telegram.org/bot{BOT_TOKEN}/sendMessage"
     requests.post(url, data={
         "chat_id": CHAT_ID,
@@ -17,7 +17,7 @@ def send_telegram("Test message: bot works!"):
 html = requests.get(URL, timeout=20).text
 
 # Find GAP 1g sell price
-pattern = r"GAP.*?1g.*?(RM\s?\d+\.\d+)"
+pattern = r"RM\s?\d+\s?=\s?1\.0000\s?gram"
 match = re.search(pattern, html, re.DOTALL | re.IGNORECASE)
 
 if not match:
