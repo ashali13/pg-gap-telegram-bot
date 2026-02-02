@@ -2,7 +2,7 @@ name: PG GAP Checker
 
 on:
   schedule:
-    - cron: "*/10 * * * *"
+    - cron: "16,36,56 * * * *"
   workflow_dispatch:
 
 jobs:
