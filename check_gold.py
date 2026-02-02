@@ -7,7 +7,7 @@ CHAT_ID = os.environ["CHAT_ID"]
 
 URL = "https://www.publicgold.com.my/"
 
-def send_telegram(msg):
+def send_telegram("Test message: bot works!"):
     url = f"https://api.telegram.org/bot{BOT_TOKEN}/sendMessage"
     requests.post(url, data={
         "chat_id": CHAT_ID,
