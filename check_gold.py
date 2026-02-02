@@ -52,14 +52,18 @@ change_amount = f"RM{abs(difference):.0f}"
 # 📈 Increase
 if difference > 0:
     message = (
-        f"harga emas GAP baru sahaja naik sebanyak {change_amount} "
+        f"‼️‼️‼️PRICE UPDATED‼️‼️‼️
+        
+        Harga emas GAP baru sahaja naik sebanyak RM{change_amount} "
         f"daripada RM{last_price:.0f} kepada RM{current_price:.0f}"
     )
 
 # 📉 Decrease
 else:
     message = (
-        f"harga emas GAP baru sahaja turun sebanyak {change_amount} "
+        f"‼️‼️‼️PRICE UPDATED‼️‼️‼️
+        
+        Harga emas GAP baru sahaja turun sebanyak RM{change_amount} "
         f"daripada RM{last_price:.0f} kepada RM{current_price:.0f}"
     )
 
