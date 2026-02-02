@@ -17,13 +17,13 @@ def send_telegram(msg):
 html = requests.get(URL, timeout=20).text
 
 # Find GAP 1g sell price
-pattern = r"RM\s?\d+\s?=\s?1\.0000\s?gram"
-match = re.search(pattern, html, re.DOTALL | re.IGNORECASE)
+pattern = r"(RM\s?\d+)\s?=\s?1\.0000\s?gram"
+match = re.search(pattern, html, re.IGNORECASE)
 
 if not match:
     exit()
 
-current_price_str = match.group(1)           # e.g. RM606.00
+current_price_str = match.group(1)  # e.g. RM648
 current_price = float(current_price_str.replace("RM", "").strip())
 
 # Read last price
