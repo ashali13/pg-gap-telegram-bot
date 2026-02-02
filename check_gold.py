@@ -58,13 +58,13 @@ change_amount = f"{abs(difference):.0f}"
 if difference > 0:
     message = (
         f"‼️‼️‼️PRICE UPDATED‼️‼️‼️\n\n"
-        f"Harga emas GAP baru sahaja *NAIK* sebanyak *RM{change_amount}* "
+        f"Harga emas GAP baru sahaja dikemaskini *NAIK* sebanyak *RM{change_amount}* "
         f"daripada *RM{last_price:.0f}* kepada *{current_price_str}*"
     )
 else:
     message = (
         f"‼️‼️‼️PRICE UPDATED‼️‼️‼️\n\n"
-        f"Harga emas GAP baru sahaja *TURUN* sebanyak *RM{change_amount}* "
+        f"Harga emas GAP baru sahaja dikemaskini *TURUN* sebanyak *RM{change_amount}* "
         f"daripada *RM{last_price:.0f}* kepada *{current_price_str}*"
     )
 
